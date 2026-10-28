@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>وَصْل | مجتمع الجامعة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" aria-label="وصل"><span class="brand-mark">و</span><span><b>وَصْل</b><small>حياة جامعية أقرب</small></span></a>
+    <div class="campus-pill"><span class="pulse"></span> <span id="universityName">مجتمع جامعة جدة</span></div>
+    <nav class="nav">
+      <button class="nav-link active" data-page="events"><span>✦</span> الفعاليات</button>
+      <button class="nav-link" data-page="clubs"><span>◈</span> الأندية الطلابية</button>
+      <button class="nav-link" data-page="rooms"><span>◉</span> الجلسات المؤقتة <i id="roomCount">3</i></button>
+    </nav>
+    <div class="side-label">مساحتك</div>
+    <div class="sidebar-role-tools hidden" id="sidebarClubTools" aria-label="أدوات مسؤول النادي">
+      <button class="nav-link role-shortcut" id="clubPublish"><span>＋</span> نشر إعلان النادي</button>
+      <button class="nav-link role-shortcut" id="membershipRequests"><span>♧</span> طلبات الانضمام</button>
+    </div>
+    <div class="sidebar-role-tools hidden" id="sidebarAdminTools" aria-label="أدوات مدير النظام">
+      <button class="nav-link role-shortcut" id="adminPublish"><span>＋</span> إضافة إعلان</button>
+      <button class="nav-link role-shortcut" id="reviewEvents"><span>▤</span> مراجعة الطلبات</button>
+    </div>
+    <button class="nav-link" data-page="saved"><span>♡</span> الفعاليات المحفوظة</button>
+    <button class="nav-link" data-page="settings"><span>⚙</span> الإعدادات</button>
+    <div class="sidebar-bottom">
+      <div class="help-card"><span class="help-icon">✳</span><b>كل شيء يصير أقرب.</b><p>اكتشف فرصًا جديدة، وتعرّف على ناس يشبهون اهتماماتك.</p></div>
+      <button class="profile-mini" id="openProfile"><span class="avatar">م</span><span><b id="miniName">مستخدم وصل</b><small id="miniRole">طالب جامعي</small></span><span class="dots">•••</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn mobile-menu" id="menuBtn" aria-label="القائمة">☰</button>
+      <div class="breadcrumbs"><span>مساحتك الجامعية</span><b>/</b><strong id="pageCrumb">اكتشف الفعاليات</strong></div>
+      <div class="top-actions">
+        <span class="today" id="todayLabel"></span>
+        <button class="icon-btn" id="themeBtn" title="تغيير المظهر" aria-label="تغيير المظهر">☼</button>
+        <button class="icon-btn notification-btn" id="notificationBtn" title="التنبيهات">♧<i></i></button>
+        <button class="avatar top-avatar" id="openProfile2" title="الملف الشخصي">م</button>
+      </div>
+    </header>
+
+    <section class="page active" id="page-events">
+      <div class="hero">
+        <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
+        <div class="hero-content">
+          <div class="eyebrow"><span class="spark">✦</span> مساحتك، فرصك، مجتمعك</div>
+          <h1>عِش جامعتك<br><em>   بكل تفاصيلها</em></h1>
+          <p>من فعاليات ملهمة إلى تحديات تصنع الفرق — تلقى فرصتك الجاية هنا.</p>
+          <button class="primary-btn" id="exploreBtn">اكتشف الفعاليات <span>←</span></button>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div class="hero-glyph">وَ<br><span>صْل</span></div>
+          <div class="float-tag tag-top">✦ تعلّم شيئًا جديدًا</div><div class="float-tag tag-bottom">↗ فرصتك تبدأ هنا</div>
+          <span class="tiny-star star-a">✳</span><span class="tiny-star star-b">✦</span>
+        </div>
+        <div class="hero-index"><span>01</span><i></i><span>03</span></div>
+      </div>
+
+      <div class="section-head intro-head"><div><div class="eyebrow muted-eyebrow">مختارة لك</div><h2>وش ودّك تسوي اليوم؟</h2><p>ابحث عن تجربة تناسب فضولك ووقتك.</p></div><span class="live-badge"><i></i> يتجدد باستمرار</span></div>
+
+      <div class="search-panel">
+        <label class="search-box"><span>⌕</span><input id="searchInput" placeholder="ابحث عن فعالية، مجال، أو كلمة..." autocomplete="off"><kbd>⌘ K</kbd></label>
+        <label class="filter-field"><span>نوع الفعالية</span><select id="categoryFilter"><option value="">كل الأنواع</option><option>معارض وعروض</option><option>تقنية وابتكار</option><option>مؤتمرات ولقاءات</option><option>فعاليات ثقافية وفنية</option><option>فعاليات اجتماعية وترفيهية</option><option>رياضية</option><option>حفلات ومناسبات</option><option>ورش وتدريب</option></select></label>
+        <label class="filter-field"><span>الكلية</span><select id="collegeFilter"><option value="">كل الكليات</option><option>الحاسبات وتقنية المعلومات</option><option>الهندسة</option><option>الأعمال</option><option>العلوم</option><option>التصاميم والفنون</option><option>الطب</option><option>كلية أخرى</option></select></label>
+        <label class="filter-field"><span>الموعد</span><select id="dateFilter"><option value="">كل المواعيد</option><option value="today">اليوم</option><option value="week">هذا الأسبوع</option></select></label>
+        <button class="search-submit" id="resetFilters">إعادة ضبط <span>↺</span></button>
+      </div>
+
+      <div class="chips" id="categoryChips"><button class="chip selected" data-chip="">الكل <span>✦</span></button><button class="chip" data-chip="تقنية وابتكار">تقنية وابتكار</button><button class="chip" data-chip="ورش وتدريب">ورش وتدريب</button><button class="chip" data-chip="معارض وعروض">معارض وعروض</button><button class="chip" data-chip="مؤتمرات ولقاءات">لقاءات</button></div>
+
+      <div class="section-head events-head"><div><h2>فعاليات تستاهل وقتك <span class="count" id="eventCount">06</span></h2><p>اختيارات متنوعة من مجتمع الجامعة.</p></div><button class="text-btn" id="submitEventBtn">+ اقترح فعالية</button></div>
+      <div class="event-grid" id="eventGrid"></div>
+      <div class="empty-state hidden" id="emptyState"><span>⌕</span><h3>ما لقينا نتائج مطابقة</h3><p>جرّب تغيّر كلمات البحث أو توسّع خيارات التصفية.</p><button class="secondary-btn" id="emptyReset">مسح الفلاتر</button></div>
+      <div class="section-head lower-head"><div><h2>مكانك بين ناس تشبهك!</h2><p>مجتمعات طلابية تفتح لك أبواب جديدة.</p></div><button class="text-btn" data-goto="clubs">استكشف الأندية ←</button></div>
+      <div class="club-strip" id="clubStrip"></div>
+    </section>
+
+    <section class="page" id="page-clubs">
+      <div class="page-title-block"><div class="eyebrow muted-eyebrow">مجتمع يصنع الفرق</div><h1>تلقى ناسك <em>هنا.</em></h1><p>اكتشف الأندية الطلابية، تابع أنشطتها، واطلب الانضمام للمجتمع اللي يشبهك.</p></div>
+      <div class="club-toolbar"><label class="search-box"><span>⌕</span><input id="clubSearch" placeholder="ابحث عن نادٍ أو اهتمام..."></label><select id="clubCategory"><option value="">كل المجالات</option><option>تقني</option><option>رياضي</option><option>ثقافي</option><option>أكاديمي</option><option>فني وإبداعي</option><option>تطوعي</option><option>قيادي</option></select><select id="clubCollege"><option value="">كل الكليات</option><option>الحاسبات وتقنية المعلومات</option><option>الهندسة</option><option>الأعمال</option><option>العلوم</option><option>التصاميم والفنون</option><option>الأنشطة الطلابية</option></select></div>
+      <div class="club-grid" id="clubGrid"></div>
+    </section>
+
+    <section class="page" id="page-rooms">
+      <div class="page-title-block room-title"><div class="eyebrow muted-eyebrow">بين المحاضرات</div><h1>لا تجلس لحالك،<br><em>وسَع دائرتك</em></h1><p>جلسة مؤقتة للعب، المذاكرة، والأنشطة السريعة داخل الجامعة.</p><button class="primary-btn" id="createRoomBtn">+ أنشئ جلسة جديدة</button></div>
+      <div class="room-filters"><button class="chip selected" data-roomfilter="">كل الجلسات</button><button class="chip" data-roomfilter="مذاكرة">مذاكرة</button><button class="chip" data-roomfilter="ألعاب">ألعاب</button><button class="chip" data-roomfilter="رياضة">رياضة</button><button class="chip" data-roomfilter="جلسة">جلسات</button></div>
+      <div class="active-room-notice hidden" id="activeRoomNotice"></div>
+      <div class="room-grid" id="roomGrid"></div>
+    </section>
+
+    <section class="page" id="page-saved">
+      <div class="page-title-block"><div class="eyebrow muted-eyebrow">قائمة ترجع لها</div><h1>أشياء ما ودّك <em>تفوتك.</em></h1><p>كل الفعاليات اللي حفظتها في مكان واحد.</p></div>
+      <div class="event-grid" id="savedGrid"></div><div class="empty-state" id="savedEmpty"><span>♡</span><h3>قائمتك للحين فاضية</h3><p>احفظ الفعاليات اللي تهمك وبتلقاها هنا.</p><button class="secondary-btn" data-goto="events">اكتشف الفعاليات</button></div>
+    </section>
+
+    <section class="page" id="page-settings">
+      <div class="page-title-block"><div class="eyebrow muted-eyebrow">مساحتك على طريقتك</div><h1>الإعدادات <em>والخصوصية.</em></h1><p>إدارة تفضيلات وَصْل والتنبيهات والحساب التجريبي.</p></div>
+      <div class="settings-grid">
+        <section class="settings-card"><h2>التفضيلات العامة</h2><label class="setting-field">المظهر<select id="settingsTheme"><option value="dark">داكن</option><option value="light">فاتح</option></select></label><label class="setting-field">اللغة<select id="settingsLanguage"><option value="ar">العربية</option><option value="en">English (قريبًا)</option></select></label><p class="settings-hint">الواجهة الحالية عربية، وخيار الإنجليزية للتجهيز المستقبلي.</p></section>
+        <section class="settings-card"><h2>تنبيهات الفعاليات</h2><p>اختاري التصنيفات اللي تهمك لتظهر لك ضمن التنبيهات التجريبية.</p><div class="preference-list" id="eventPreferences"><label><input type="checkbox" value="معارض وعروض" checked> معارض وعروض</label><label><input type="checkbox" value="تقنية وابتكار" checked> تقنية وابتكار</label><label><input type="checkbox" value="مؤتمرات ولقاءات" checked> مؤتمرات ولقاءات</label><label><input type="checkbox" value="فعاليات ثقافية وفنية" checked> فعاليات ثقافية وفنية</label><label><input type="checkbox" value="فعاليات اجتماعية وترفيهية" checked> فعاليات اجتماعية وترفيهية</label><label><input type="checkbox" value="رياضية" checked> رياضية</label><label><input type="checkbox" value="حفلات ومناسبات" checked> حفلات ومناسبات</label><label><input type="checkbox" value="ورش وتدريب" checked> ورش وتدريب</label></div></section>
+        <section class="settings-card"><h2>تنبيهات الجلسات المؤقتة</h2><div class="preference-list" id="roomPreferences"><label><input type="checkbox" value="مذاكرة" checked> مذاكرة</label><label><input type="checkbox" value="ألعاب" checked> ألعاب</label><label><input type="checkbox" value="رياضة" checked> رياضة</label><label><input type="checkbox" value="جلسة" checked> جلسات أخرى</label></div></section>
+        <section class="settings-card"><h2>طلبات الانضمام للأندية</h2><div id="myRequests"></div></section>
+        <section class="settings-card"><h2>الحساب والخصوصية</h2><label class="setting-field">البريد الإلكتروني<input id="settingsEmail" type="email" placeholder="البريد المسجل في الحساب التجريبي"></label><label class="setting-field">كلمة المرور الجديدة<input id="settingsPassword" type="password" minlength="8" placeholder="8 أحرف أو أكثر"></label><label class="privacy-toggle"><input id="privacyToggle" type="checkbox" checked> تقييد عرض بياناتي الشخصية في واجهة التجربة</label><button class="primary-btn" id="saveSettings">حفظ الإعدادات</button><div class="settings-actions"><button class="secondary-btn" id="settingsAuth">تسجيل الدخول / إنشاء حساب</button><button class="secondary-btn" id="logoutBtn">تسجيل الخروج</button><button class="danger-btn" id="deleteAccountBtn">حذف الحساب التجريبي</button></div><p class="settings-hint">نسخة محلية للعرض فقط: الحسابات والطلبات والإعلانات لا تُرسل إلى خادم أو إلى إدارة الجامعة.</p></section>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="profileDrawer">
+  <div class="drawer-head"><div><div class="eyebrow muted-eyebrow">مساحتك الشخصية</div><h2>ملفك في وَصْل</h2></div><button class="icon-btn close-drawer" data-close>×</button></div>
+  <div class="profile-cover"><div class="avatar big-avatar" id="profileAvatar">م</div><div><b id="profileNameView">مستخدم وصل</b><small id="profileRoleView">طالب جامعي</small></div><span class="profile-spark">✦</span></div>
+  <form id="profileForm" class="stack-form">
+    <label>الاسم الكامل<input id="profileName" value="مستخدم وصل" required></label>
+    <label>الرقم الجامعي<input id="studentId" placeholder="مثال: 2024xxxx"></label>
+    <label>الجامعة<select id="profileUniversity"><option>جامعة جدة</option><option>جامعة أخرى (قريبًا)</option></select></label>
+    <label>الكلية<select id="profileCollege"><option>الحاسبات وتقنية المعلومات</option><option>الهندسة</option><option>الأعمال</option><option>العلوم</option><option>التصاميم والفنون</option><option>الطب</option><option>كلية أخرى</option></select></label>
+    <label>التخصص<input id="major" placeholder="تخصصك الدراسي"></label>
+    <label>السنة الدراسية<select id="year"><option>السنة الأولى</option><option>السنة الثانية</option><option>السنة الثالثة</option><option>السنة الرابعة</option><option>السنة الخامسة أو أكثر</option></select></label>
+    <label>الدور في المنصة<select id="roleSelect"><option value="student">طالب جامعي</option><option value="club">مسؤول نادي (تجريبي)</option><option value="admin">مدير النظام (تجريبي)</option></select></label>
+    <label id="clubSelectWrap" class="hidden">النادي الذي تديره<select id="clubSelect"><option value="نادي الأمن السيبراني">نادي الأمن السيبراني</option><option value="نادي التصميم">نادي التصميم</option><option value="نادي ريادة الأعمال">نادي ريادة الأعمال</option><option value="نادي القراءة">نادي القراءة</option><option value="نادي التطوع">نادي التطوع</option><option value="مجتمع الذكاء الاصطناعي">مجتمع الذكاء الاصطناعي</option><option value="نادي الهندسة">نادي الهندسة</option><option value="النادي الرياضي">النادي الرياضي</option><option value="نادي الابتكار">نادي الابتكار</option><option value="نادي العلوم">نادي العلوم</option></select></label>
+    <button class="primary-btn full" type="submit">حفظ الملف الشخصي</button>
+    <button class="secondary-btn full" type="button" id="openAuth">تسجيل الدخول / إنشاء حساب</button>
+  </form>
+  <div class="drawer-section"><h3>المظهر</h3><button class="setting-row" id="drawerTheme"><span>☼</span><span>الوضع الفاتح / الداكن<small>غيّر أجواء واجهتك</small></span><b>↔</b></button></div>
+  <div class="drawer-section"><h3>التنبيهات</h3><label class="toggle-row">تنبيهات الفعاليات<input type="checkbox" checked><span class="switch"></span></label><label class="toggle-row">تنبيهات الجلسات المؤقتة<input type="checkbox" checked><span class="switch"></span></label></div>
+  <div class="drawer-footer">وَصْل — مجتمعك الجامعي أقرب</div>
+</aside>
+
+<div class="modal-wrap" id="modalWrap" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true"><button class="icon-btn modal-close" id="modalClose">×</button><div id="modalContent"></div></div></div>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body></html>
